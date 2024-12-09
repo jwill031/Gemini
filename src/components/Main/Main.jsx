@@ -68,7 +68,7 @@ const Main = () => {
           <>
             <div className="greet">
               <p>
-                <span>{isListening ? "I'm listening" : "Hello, Josh"}</span>
+                <span>{isListening ? "I'm listening" : "Hello, there"}</span>
               </p>
             </div>
           </>

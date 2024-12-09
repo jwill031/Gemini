@@ -79,6 +79,14 @@
     cursor: pointer;
 }
 
+.sidebar .bottom-item:hover {
+    background-color: #1a1a1b;
+}
+
+.sidebar .bottom-item p{
+    font-weight: 300;
+}
+
 @media (max-width:600px) {
     .sidebar {
         display: none;
