@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% { left: 0; }
+  50% { left: calc( 100% - 50px ); }
+  100% { left: 0; }
+}
+
+.light.main {
+  background-color: #fff;
+  transition: 0.2s ease;
+}
+
+.sidebar.light {
+  background-color: #F0F4F8;
+  color: black;
+  transition: 0.2s ease;
+}
+
+.menu.light  {
+  filter: brightness(0.8);
+  transition: 0.2s ease;
+}
+
+.bottom.light {
+  filter: invert(1);
+  transition: 0.2s ease;
+}
+
+.sidebar.light .new-chat {
+  background-color: #E5EAF2;
+  color: #9A9DA1;
+  transition: 0.2s ease;
+}
+
+.search-box.light {
+  background-color: #F0F4F8;
+  transition: 0.2s ease;
+}
+
+.title.light {
+  color: black;
+  transition: 0.2s ease;
+}
+
+.search-box.light img {
+  filter: brightness(0.8);
+  transition: 0.2s ease;
+}
+
+.search-box.light input {
+  color: black;
+  transition: 0.2s ease;
+}
+
+.result.light {
+  color: black;
+  transition: 0.2s ease;
+}
+
+.search-box.light:focus-within {
+  background-color: #E9EEF6;
+}
