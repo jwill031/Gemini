@@ -35,7 +35,15 @@ const ContextProvider = (props) => {
         lang,
       )
 
-      return `<div class="code-block"><pre class="language-${lang}"><code class="language-${lang}">${highlightedCode}</code></pre></div>`
+      return `
+        <div class="code-block">
+          <pre class="language-${lang}">
+            <code class="language-${lang}">
+              ${highlightedCode}
+            </code>
+          </pre>
+        </div>
+      `
     })
   }
 
@@ -71,11 +79,13 @@ const ContextProvider = (props) => {
       response = await runChat(input)
     }
 
-    const formattedResponse = replaceOutsideCodeBlocks(response, (text) =>
-      text
-        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Double asterisks to <b>
-        .replace(/\*(.*?)\*/g, '<li>$1</li>') // Single asterisk to bullet point
-        .replace(/\n/g, '<br />'), // Newline to <br />
+    const formattedResponse = replaceOutsideCodeBlocks(
+      response,
+      (text) =>
+        text
+          .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Double asterisks to <b>
+          .replace(/\*(.*?)\*/g, '<li>$1</li>') // Single asterisk to bullet point
+          .replace(/\n/g, '<br />'), // Newline to <br />
     )
 
     const finalResponse = formatCodeBlocks(formattedResponse)
