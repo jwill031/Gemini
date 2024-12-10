@@ -82,3 +82,22 @@
 .search-box.light:focus-within {
   background-color: #E9EEF6;
 }
+
+.enter-name.light {
+  background-color: #E5EAF2;
+  color: black;
+  transition: 0.2s ease;
+}
+
+.enter-name.light:hover {
+  background-color:#9A9DA1;
+}
+
+.show-apps.light {
+  filter: invert(1)
+}
+
+.seperate.light {
+  filter: invert(1);
+  transition: 0.2s ease;
+}

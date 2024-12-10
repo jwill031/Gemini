@@ -78,12 +78,14 @@ const Main = () => {
         <p className={`title ${theme}`} onClick={() => window.location.reload()}>
           Gemini
         </p>
-        <div className="profile-container">
-          <button className="enter-name" onClick={askForName}>
+        <div className={`profile-container ${theme}`}>
+          <button className={`enter-name ${theme}`} onClick={askForName}>
             <img className="gem-icon" src={assets.gemini} alt="" />
             Try Gemini Advanced
           </button>
-          <img src={assets.show_apps} className="show-apps" alt="" />
+          <div className={`seperate ${theme}`}>
+            <img src={assets.show_apps} className={`show-apps ${theme}`} alt="" />
+          </div>
           <img src={assets.jw_pfp} className="pfp" alt="" />
         </div>
       </div>
@@ -126,17 +128,17 @@ const Main = () => {
               placeholder="Ask Gemini"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
-                  e.preventDefault();
-                  onSent();
+                  e.preventDefault()
+                  onSent()
                 }
               }}
               onInput={(e) => {
-                const target = e.target;
-                target.style.height = "auto"; // Reset height to calculate new height
-                target.style.height = `${Math.min(target.scrollHeight, 200)}px`; // Set new height up to max
+                const target = e.target
+                target.style.height = 'auto' // Reset height to calculate new height
+                target.style.height = `${Math.min(target.scrollHeight, 200)}px` // Set new height up to max
               }}
             />
-            <div className='buttons-container'>
+            <div className="buttons-container">
               <img onClick={toggleTheme} src={assets.light_mode} alt="Toggle Theme" />
               <img
                 onClick={() => {
@@ -147,7 +149,7 @@ const Main = () => {
               />
               {input ? (
                 <img
-                  className='send-button'
+                  className="send-button"
                   onClick={() => onSent()}
                   src={assets.send}
                   alt=""
