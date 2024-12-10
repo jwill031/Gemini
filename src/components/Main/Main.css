@@ -20,7 +20,7 @@
     font-weight: 200;
     padding: 12px;
     color: white;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .main .nav p {
@@ -31,7 +31,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
 }
 
 .profile-container .gem-icon {
@@ -39,31 +38,28 @@
 }
 
 .profile-pic {
-    width: 50px; /* Adjust size as needed */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Makes it circular */
+    border-radius: 50%;
 }
 
 .enter-name {
     display: flex;
-    align-items: center; /* Align image and text vertically */
-    gap: 8px; /* Space between image and text */
-    padding: 8px 16px; /* Adjust padding */
-    background-color: #3c3f42; /* Example color */
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #3c3f42;
     color: white;
     border: none;
-    border-radius: 5px; /* Optional rounded corners */
-    font-family: Outfit; /* Matches the rest of your design */
+    border-radius: 5px;
+    font-family: Outfit;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-
-
 .enter-name:hover {
-    background-color: #575b5f; /* Change color on hover */
+    background-color: #575b5f;
 }
-
 
 .main .nav .pfp {
     width: 40px;
@@ -100,8 +96,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     background: -webkit-linear-gradient(16deg, #4b90ff, #ff5546);
-    -webkit-background-clip: text;
-    background-clip: none;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 36px;
     cursor: default; 
@@ -147,23 +142,44 @@
 
 .search-box {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     background-color: #282a2c;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 20px;
     transition: 0.2s ease;
+    position: relative;
 }
 
-.search-box:focus-within {
-    background-color: #323537; /* Change to your desired color */
+.search-box textarea {
+    flex: 1;
+    background: inherit;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-weight: 300;
+    font-family: inherit;
+    font-size: 18px;
+    color: white; /* Initial height */
+    min-height: 40px;
+    max-height: 200px; /* Maximum height */
+    overflow-y: auto; /* Show scrollbar if the content exceeds max-height */
+    resize: none; /* Disable manual resizing by the user */
+    transition: height 0.2s ease; /* Optional smooth resizing */
 }
 
+.search-box .buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
 
-.search-box:focus-visible {
-    background-color: #979b9f;
-    transition: 0.1s ease;
+.search-box .send-button {
+    margin-left: auto; /* Push send-button to the far right */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .search-box img {
@@ -174,31 +190,12 @@
     background: none;
 }
 
-.search-box .send-btn {
-    transition: 0.2s ease;
-    animation: forwards;
+.search-box:focus-within {
+    background-color: #323537;
 }
 
-.send-btn-hidden {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-  }
-
-.search-box input{
-    flex: 1;
-    background: transparent;
-    border: none;
+.search-box textarea:focus {
     outline: none;
-    padding: 8px;
-    font-weight:500;
-    font-size: 16px;
-    color: white;
-}
-
-.search-box div {
-    display: flex;
-    align-items: center;
-    gap: 15px;
 }
 
 .main .bottom-info {
@@ -208,12 +205,8 @@
     font-weight: 300;
 }
 
-.send-btn {
-    transition: 0.2s ease;
-}
-
 .result {
-    padding: 0px 5%;
+    padding: 25px 5%;
     max-height: 70vh;
     overflow-y: scroll;
     font-weight: 300;
@@ -274,7 +267,7 @@
     line-height: 1.8;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .main-bottom input {
         flex: none;
         width: 150px;
@@ -283,10 +276,21 @@
         width: 20px;
     }
     .search-box {
+        gap: 5px;
         padding: 5px 10px;
     }
     .search-box div {
-        gap:5px;
+        gap: 5px;
+    }
+    .search-box textarea {
+        font-size: 16px;
+    }
+    .search-box img {
+        width: 20px;
+    }
+
+    .enter-name {
+        display: none;
     }
 }
 
@@ -297,5 +301,5 @@ pre[class*="language-"] {
 }
 
 .token.operator {
-    background-color: #282a2c; /* Light gray background */
+    background-color: #282a2c;
 }

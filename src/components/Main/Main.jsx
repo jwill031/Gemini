@@ -119,18 +119,24 @@ const Main = () => {
 
         <div className="main-bottom">
           <div className={`search-box ${theme}`}>
-            <input
+            <textarea
               onChange={(e) => setInput(e.target.value)}
               value={input}
               type="text"
               placeholder="Ask Gemini"
               onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  onSent()
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  onSent();
                 }
               }}
+              onInput={(e) => {
+                const target = e.target;
+                target.style.height = "auto"; // Reset height to calculate new height
+                target.style.height = `${Math.min(target.scrollHeight, 200)}px`; // Set new height up to max
+              }}
             />
-            <div>
+            <div className='buttons-container'>
               <img onClick={toggleTheme} src={assets.light_mode} alt="Toggle Theme" />
               <img
                 onClick={() => {
@@ -141,6 +147,7 @@ const Main = () => {
               />
               {input ? (
                 <img
+                  className='send-button'
                   onClick={() => onSent()}
                   src={assets.send}
                   alt=""
