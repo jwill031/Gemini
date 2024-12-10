@@ -17,8 +17,14 @@ import copytoclip from './copytoclip.png'
 import light_mode from './light_mode.png'
 import mic from './mic.png'
 import newmic from './newmic.png'
+import send from './send.png'
+import show_apps from './show_apps.png'
+import gemini from './gemini.svg'
 
 export const assets = {
+    gemini,
+    show_apps,
+    send,
     newmic,
     history_icon,
     menu_icon,

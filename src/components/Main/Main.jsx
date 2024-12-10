@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
-import "./Main.css";
-import { assets } from "../../assets/assets";
-import { Context } from "../../context/Context";
-import { ThemeContext } from "../../ThemeContext";
+import React, { createContext, useContext, useState } from 'react'
+import './Main.css'
+import { assets } from '../../assets/assets'
+import { Context } from '../../context/Context'
+import { ThemeContext } from '../../ThemeContext'
 
 const Main = () => {
   const {
@@ -13,62 +13,86 @@ const Main = () => {
     resultData,
     setInput,
     input,
-    setRecentPrompt
-  } = useContext(Context);
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const [isListening, setIsListening] = useState(false);
+    setRecentPrompt,
+  } = useContext(Context)
+  const { theme, toggleTheme } = useContext(ThemeContext)
+  const [isListening, setIsListening] = useState(false)
+
+  const askForName = () => {
+    let q = window.prompt('Enter your name')
+    return q
+  }
 
   const startSpeechRecognition = () => {
-    if (
-      !("webkitSpeechRecognition" in window || "SpeechRecognition" in window)
-    ) {
-      alert("Speech recognition is not supported in this browser.");
-      return;
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      alert('Speech recognition is not supported in this browser.')
+      return
     }
 
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
 
-    recognition.lang = "en-US";
-    recognition.interimResults = true;
-    recognition.continuous = false;
+    recognition.lang = 'en-US'
+    recognition.interimResults = true
+    recognition.continuous = false
 
     recognition.onstart = () => {
-      setIsListening(true);
-    };
+      setIsListening(true)
+    }
 
     recognition.onresult = (event) => {
       const transcript = Array.from(event.results)
         .map((result) => result[0].transcript)
-        .join("");
-      setInput(transcript);
-    };
+        .join('')
+      setInput(transcript)
+    }
 
     recognition.onerror = (event) => {
-      alert(`Speech recognition error: ${event.error}`);
-      setIsListening(false);
-    };
+      alert(`Speech recognition error: ${event.error}`)
+      setIsListening(false)
+    }
 
     recognition.onend = () => {
-      setIsListening(false);
-    };
+      setIsListening(false)
+    }
 
-    recognition.start();
-  };
+    recognition.start()
+  }
+
+  const greeting = () => {
+    const now = new Date()
+    const hrs = now.getHours()
+
+    if (hrs > 4 && hrs < 12) {
+      return `Good Morning`
+    } else if (hrs > 12 && hrs < 18) {
+      return 'Good Afternoon'
+    } else {
+      return 'Good Evening'
+    }
+  }
 
   return (
     <div className={`main ${theme}`}>
       <div className="nav">
-        <p className={`title ${theme}`} onClick={() => window.location.reload()}>Gemini</p>
-        <img src={assets.jw_pfp} alt="" />
+        <p className={`title ${theme}`} onClick={() => window.location.reload()}>
+          Gemini
+        </p>
+        <div className="profile-container">
+          <button className="enter-name" onClick={askForName}>
+            <img className="gem-icon" src={assets.gemini} alt="" />
+            Try Gemini Advanced
+          </button>
+          <img src={assets.show_apps} className="show-apps" alt="" />
+          <img src={assets.jw_pfp} className="pfp" alt="" />
+        </div>
       </div>
       <div className={`main-container ${theme}`}>
         {!showResult ? (
           <>
             <div className="greet">
               <p>
-                <span>{isListening ? "I'm listening" : "Hello, there"}</span>
+                <span>{isListening ? "I'm listening" : greeting()}</span>
               </p>
             </div>
           </>
@@ -101,20 +125,16 @@ const Main = () => {
               type="text"
               placeholder="Ask Gemini"
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  onSent();
+                if (e.key === 'Enter') {
+                  onSent()
                 }
               }}
             />
             <div>
-              <img
-                onClick={toggleTheme}
-                src={assets.light_mode}
-                alt="Toggle Theme"
-              />
+              <img onClick={toggleTheme} src={assets.light_mode} alt="Toggle Theme" />
               <img
                 onClick={() => {
-                  startSpeechRecognition();
+                  startSpeechRecognition()
                 }}
                 src={assets.mic}
                 alt="Start Speech Recognition"
@@ -122,11 +142,11 @@ const Main = () => {
               {input ? (
                 <img
                   onClick={() => onSent()}
-                  src={assets.send_icon}
+                  src={assets.send}
                   alt=""
                   style={{
-                    transform: input ? "translateX(0)" : "translateX(-100%)",
-                    transition: "transform 0.3s ease-in-out",
+                    transform: input ? 'translateX(0)' : 'translateX(-100%)',
+                    transition: 'transform 0.3s ease-in-out',
                   }}
                 />
               ) : null}
@@ -136,7 +156,7 @@ const Main = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

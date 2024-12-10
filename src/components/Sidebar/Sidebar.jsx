@@ -19,7 +19,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className={`sidebar ${theme}`}>
+        <div className={`sidebar ${theme} ${extended ? 'extended' : ''}`}>
             <div className='top'>
                 <img onClick={() => setExtended(prev => !prev)} className={`menu ${theme}`} src={assets.menu_icon} alt='' />
                 <div onClick={() => newChat()} className='new-chat'>

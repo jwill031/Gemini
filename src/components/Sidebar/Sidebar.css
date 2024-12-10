@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+@keyframes smoothAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
 .sidebar {
     min-height: 100vh;
     display: inline-flex;
@@ -9,7 +24,7 @@
     padding: 25px 12px;
     color: white;
     font-family: Outfit;
-    transition: 0.2s ease;
+    transition: smoothAnimation 1s ease-in-out;
 }
 
 .sidebar img {
