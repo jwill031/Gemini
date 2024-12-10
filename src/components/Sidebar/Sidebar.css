@@ -24,7 +24,7 @@
     padding: 25px 12px;
     color: white;
     font-family: Outfit;
-    transition: smoothAnimation 1s ease-in-out;
+    animation: 1s ease;
 }
 
 .sidebar img {
