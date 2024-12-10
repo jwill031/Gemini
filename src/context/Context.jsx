@@ -48,14 +48,11 @@ const ContextProvider = (props) => {
     const matches = [...text.matchAll(codeBlockRegex)];
 
     matches.forEach((match) => {
-      // Add text before the code block
       result += replacementFn(text.slice(lastIndex, match.index));
-      // Add the code block unchanged
       result += match[0];
       lastIndex = match.index + match[0].length;
     });
 
-    // Add remaining text after the last code block
     result += replacementFn(text.slice(lastIndex));
     return result;
   };
@@ -75,12 +72,10 @@ const ContextProvider = (props) => {
       response = await runChat(input);
     }
 
-    // Replace `*` outside code blocks
     const formattedResponse = replaceOutsideCodeBlocks(response, (text) =>
       text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>").replace(/\*(.*?)\*/g, "<i>$1</i>")
     );
 
-    // Process code blocks
     const finalResponse = formatCodeBlocks(formattedResponse);
 
     let newResponseArr = finalResponse.split(" ");
