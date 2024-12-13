@@ -17,6 +17,7 @@ const Main = () => {
   } = useContext(Context)
   const { theme, toggleTheme } = useContext(ThemeContext)
   const [isListening, setIsListening] = useState(false)
+  const [name, setName] = useState("");
 
   const askForName = () => {
     let q = window.prompt('Enter your name')
@@ -134,8 +135,8 @@ const Main = () => {
               }}
               onInput={(e) => {
                 const target = e.target
-                target.style.height = 'auto' // Reset height to calculate new height
-                target.style.height = `${Math.min(target.scrollHeight, 200)}px` // Set new height up to max
+                target.style.height = 'auto'
+                target.style.height = `${Math.min(target.scrollHeight, 200)}px`
               }}
             />
             <div className="buttons-container">
